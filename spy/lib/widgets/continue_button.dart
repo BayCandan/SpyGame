@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:spy/page/player_selection.dart';
+import 'package:spy/page/player_selection_page.dart';
 import 'package:spy/page/test_page.dart';
 
 

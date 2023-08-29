@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:spy/controller/getx_controller.dart';
+import 'package:spy/page/interim_page.dart';
+import 'package:spy/page/card_page.dart';
 import 'package:spy/page/test_page.dart';
-import 'package:spy/widgets/continueWidget.dart';
+import 'package:spy/widgets/continue_button.dart';
 
 class PlayerSelection extends StatefulWidget {
   const PlayerSelection({super.key});
@@ -9,25 +12,10 @@ class PlayerSelection extends StatefulWidget {
   State<PlayerSelection> createState() => _PlayerSelectionState();
 }
 
-int players = 3;
+int players = 2;
 
 
 class _PlayerSelectionState extends State<PlayerSelection> {
-  // _setPlayers() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   prefs.setInt("players", players);
-  // }
-
-  // _getPlayers() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   players = (await prefs.getInt("players")) ?? 3;
-  // }
-
-  @override
-  void initState() {
-    super.initState();
-    // _getPlayers();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,18 +68,19 @@ class _PlayerSelectionState extends State<PlayerSelection> {
                         onChanged: (newPlayers) {
                           setState(() {
                             players = newPlayers.round();
+                            storageBox.write("player", players);
                           });
                         },
-                        min: 3,
+                        min: 2,
                         max: 10,
-                        divisions: 7,
+                        divisions: 8,
                       ),
                     ],
                   ),
                 )
               ],
             ),
-            ContinueButton(TestPage())
+            ContinueButton(InterimPage())
           ],
         ),
       ),

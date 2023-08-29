@@ -3,11 +3,10 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:spy/controller/getx_controller.dart';
-import 'package:spy/page/player_selection.dart';
+import 'package:spy/page/player_selection_page.dart';
 import 'package:spy/page/test_page.dart';
 
-import '../widgets/continueWidget.dart';
-
+import '../widgets/continue_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(Controller(context: context));
-    controller.jsonOku();
+    // controller.readJson();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -41,12 +40,12 @@ class _HomePageState extends State<HomePage> {
         children: [
           Center(
             child: Container(
-              margin: const  EdgeInsets.only(top: 130),
+              margin: const EdgeInsets.only(top: 130),
               width: 225,
               height: 225,
               decoration: BoxDecoration(
                 borderRadius: BorderRadiusDirectional.circular(30),
-                image: const  DecorationImage(
+                image: const DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage("assets/card_icon.png"),
                 ),
@@ -78,10 +77,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-
-
-
-           ContinueButton( const PlayerSelection())
+          ContinueButton(const PlayerSelection())
         ],
       ),
     );
