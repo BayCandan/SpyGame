@@ -20,12 +20,7 @@ class _PlayerSelectionState extends State<PlayerSelection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black38,
-        title: Text("Casus",style: TextStyle(color: Colors.white38,fontSize: 24),),
-        
-        
-      ),
+      
       backgroundColor: Colors.blueGrey,
       body: Container(
         
@@ -80,7 +75,6 @@ class _PlayerSelectionState extends State<PlayerSelection> {
                 )
               ],
             ),
-            ContinueButton(InterimPage())
           ],
         ),
       ),

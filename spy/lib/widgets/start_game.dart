@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:spy/page/card_page.dart';
 import 'package:spy/widgets/rols.dart';
+
+import '../main_page.dart';
 
 
 Widget StartGame(BuildContext context){
@@ -9,8 +14,10 @@ Widget StartGame(BuildContext context){
         margin: EdgeInsets.only(bottom: 100),
         child: InkWell(
           onTap: () {
-            Navigator.pushReplacement(
+            
+              Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: ((context) => Rols())));
+         
           },
           child: Center(
             child: Container(
@@ -28,4 +35,9 @@ Widget StartGame(BuildContext context){
           borderRadius: BorderRadius.circular(10),
         ),
       );
+      
   }
+  void ne(){
+
+  }
+ 

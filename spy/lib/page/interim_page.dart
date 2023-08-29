@@ -6,6 +6,8 @@ import 'package:spy/page/card_page.dart';
 import 'package:spy/page/test_page.dart';
 import 'package:spy/widgets/continue_button.dart';
 
+import '../main_page.dart';
+
 class InterimPage extends StatefulWidget {
   
   const InterimPage({super.key});
@@ -21,13 +23,7 @@ class _InterimPageState extends State<InterimPage> {
     ctrl.randomSpyStart();
     ctrl.readList();
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black38,
-        title: Text(
-          "Casus",
-          style: TextStyle(color: Colors.white38, fontSize: 24),
-        ),
-      ),
+      
       backgroundColor: Colors.blueGrey,
       body: Container(
         width: double.maxFinite,
@@ -48,7 +44,6 @@ class _InterimPageState extends State<InterimPage> {
                 ),
               ),
             ),
-            ContinueButton(CardPage())
           ],
         ),
       ),

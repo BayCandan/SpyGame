@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:spy/controller/getx_controller.dart';
+import 'package:spy/main_page.dart';
 import 'package:spy/page/player_selection_page.dart';
 import 'package:spy/page/test_page.dart';
 
@@ -18,23 +18,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(Controller(context: context));
-    // controller.readJson();
+    ctrl.readJson();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Casus",
-          style: TextStyle(color: Colors.white38, fontSize: 24),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add_alert),
-            onPressed: (){
-              Get.to(const TestPage());
-            }
-          ),
-        ],
-      ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -77,7 +62,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          ContinueButton(const PlayerSelection())
+          // ContinueButton(const PlayerSelection())
         ],
       ),
     );

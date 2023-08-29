@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../controller/getx_controller.dart';
+import '../main_page.dart';
 import '../page/card_page.dart';
 
 class Rols extends StatefulWidget {
@@ -40,9 +41,10 @@ class _RolsState extends State<Rols> {
               child: Center(
                 child: InkWell(
                   onTap: () {
+                    // ctrl.oyunSonuChange();
                     ctrl.locDelete(mapIndex);
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: ((context) => CardPage())));
+                    // Navigator.pushReplacement(context,
+                    //     MaterialPageRoute(builder: ((context) => CardPage())));
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

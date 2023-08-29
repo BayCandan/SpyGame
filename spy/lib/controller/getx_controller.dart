@@ -10,6 +10,8 @@ final storageBox = GetStorage();
 class Controller extends GetxController {
   late BuildContext context;
   Controller({required this.context});
+  bool oyunsonu = false;
+  int count = 0;
 
   readJson() async {
     String readString =
@@ -56,4 +58,10 @@ class Controller extends GetxController {
     int locLength = locList.length;
     await storageBox.write('locLength', locLength);
   }
+  // oyunSonuChange()async{
+  //   oyunsonu = await !oyunsonu;
+  //   print("Change");
+  //   print(oyunsonu);
+  // }
+
 }
