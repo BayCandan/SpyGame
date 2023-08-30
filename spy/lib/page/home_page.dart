@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:spy/controller/getx_controller.dart';
 import 'package:spy/page/player_selection_page.dart';
 import 'package:spy/page/test_page.dart';
 
-import '../widgets/continue_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -77,9 +75,26 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          ContinueButton(const PlayerSelection())
         ],
       ),
+      floatingActionButton: 
+          Container(
+              height: 100,
+              width: 100,
+              child: FloatingActionButton(
+                child: Icon(
+                  Icons.arrow_forward_rounded,
+                  size: 40,
+                ),
+                onPressed: () {
+                  Get.to(PlayerSelection());
+                
+                },
+                backgroundColor: Colors.black45,
+              )),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
-}
+  
+  }
+

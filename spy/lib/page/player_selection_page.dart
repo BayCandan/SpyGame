@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:spy/controller/getx_controller.dart';
 import 'package:spy/page/interim_page.dart';
 import 'package:spy/page/card_page.dart';
 import 'package:spy/page/test_page.dart';
-import 'package:spy/widgets/continue_button.dart';
 
 class PlayerSelection extends StatefulWidget {
   const PlayerSelection({super.key});
@@ -80,10 +80,27 @@ class _PlayerSelectionState extends State<PlayerSelection> {
                 )
               ],
             ),
-            ContinueButton(InterimPage())
           ],
         ),
+        
       ),
+       floatingActionButton: 
+          Container(
+              height: 100,
+              width: 100,
+              child: FloatingActionButton(
+                child: Icon(
+                  Icons.arrow_forward_rounded,
+                  size: 40,
+                ),
+                onPressed: () {
+                  Get.to(InterimPage());
+                
+                },
+                backgroundColor: Colors.black45,
+              )),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    
     );
   }
 }

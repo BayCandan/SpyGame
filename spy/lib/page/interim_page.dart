@@ -4,7 +4,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:spy/controller/getx_controller.dart';
 import 'package:spy/page/card_page.dart';
 import 'package:spy/page/test_page.dart';
-import 'package:spy/widgets/continue_button.dart';
 
 class InterimPage extends StatefulWidget {
   
@@ -48,10 +47,26 @@ class _InterimPageState extends State<InterimPage> {
                 ),
               ),
             ),
-            ContinueButton(CardPage())
           ],
         ),
       ),
+      floatingActionButton: 
+          Container(
+              height: 100,
+              width: 100,
+              child: FloatingActionButton(
+                child: Icon(
+                  Icons.arrow_forward_rounded,
+                  size: 40,
+                ),
+                onPressed: () {
+                  Get.to(CardPage());
+                
+                },
+                backgroundColor: Colors.black45,
+              )),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    
     );
     
   }
