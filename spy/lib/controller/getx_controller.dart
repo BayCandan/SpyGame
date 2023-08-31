@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'dart:convert';
 import 'package:random_string/random_string.dart';
+import 'package:spy/services/google_ads.dart';
 
 final storageBox = GetStorage();
 
 class Controller extends GetxController {
   late BuildContext context;
   Controller({required this.context});
+  final GoogleAds googleAds = GoogleAds();
 
   readJson() async {
     String readString =

@@ -1,10 +1,13 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:random_string/random_string.dart';
 import 'package:spy/controller/getx_controller.dart';
 import 'package:spy/main.dart';
+import 'package:spy/services/google_ads.dart';
 import 'dart:convert';
 
 import '../widgets/card_image.dart';
@@ -25,6 +28,7 @@ class CardPage extends StatefulWidget {
 }
 
 class _CardPageState extends State<CardPage> {
+  final GoogleAds googleAds = GoogleAds();
   List items = storageBox.read('List');
   int itemsLenght = storageBox.read('locLength');
   int players = storageBox.read("player");
@@ -39,6 +43,9 @@ class _CardPageState extends State<CardPage> {
     super.initState();
     ctrl.randomSpyGame();
     print(itemsLenght);
+    googleAds.loadInterstitialAd();
+    googleAds.loadBannerAd();
+    googleAds.loadRewAd();
   }
 
   @override
@@ -52,12 +59,22 @@ class _CardPageState extends State<CardPage> {
           "Casus",
           style: TextStyle(color: Colors.white38, fontSize: 24),
         ),
-        
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          // mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+            Container(
+                child: googleAds.bannerAd != null
+                    ? SizedBox(
+                        width: googleAds.bannerAd!.size.width.toDouble(),
+                        height: googleAds.bannerAd!.size.height.toDouble(),
+                        child: AdWidget(ad: googleAds.bannerAd!),
+                      )
+                    : Container()),
+            SizedBox(
+              height: 50,
+            ),
             Row(
               children: [
                 Container(
@@ -94,6 +111,8 @@ class _CardPageState extends State<CardPage> {
       return SpyCard(nowPlayers);
     } else {
       if (oyunSonu == 0) {
+        // googleAds.showInterstitialAd();
+        googleAds.showRewAd();
         return StartGame(context);
       } else {}
       oyunSonu = 1;

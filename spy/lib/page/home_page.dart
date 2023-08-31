@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:spy/controller/getx_controller.dart';
 import 'package:spy/page/player_selection_page.dart';
 import 'package:spy/page/test_page.dart';
-
+import 'package:spy/services/google_ads.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,31 +15,46 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GoogleAds googleAds = GoogleAds();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    googleAds.loadBannerAd();
+  }
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(Controller(context: context));
     // controller.readJson();
     return Scaffold(
       appBar: AppBar(
+        
         title: const Text(
           "Casus",
           style: TextStyle(color: Colors.white38, fontSize: 24),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.add_alert),
-            onPressed: (){
-              Get.to(const TestPage());
-            }
-          ),
+              icon: const Icon(Icons.add_alert),
+              onPressed: () {
+                Get.to(const TestPage());
+              }),
         ],
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
+          Container(
+              child: googleAds.bannerAd != null
+                  ? SizedBox(
+                      width: googleAds.bannerAd!.size.width.toDouble(),
+                      height: googleAds.bannerAd!.size.height.toDouble(),
+                      child: AdWidget(ad: googleAds.bannerAd!),
+                    )
+                  : Container()),
           Center(
             child: Container(
-              margin: const EdgeInsets.only(top: 130),
+              margin: const EdgeInsets.only(top: 100),
               width: 225,
               height: 225,
               decoration: BoxDecoration(
@@ -75,9 +91,11 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          
         ],
       ),
-      floatingActionButton: 
+
+      floatingActionButton:
           Container(
               height: 100,
               width: 100,
@@ -88,13 +106,11 @@ class _HomePageState extends State<HomePage> {
                 ),
                 onPressed: () {
                   Get.to(PlayerSelection());
-                
                 },
                 backgroundColor: Colors.black45,
               )),
+        
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
-  
-  }
-
+}

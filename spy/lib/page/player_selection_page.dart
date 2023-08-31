@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:spy/controller/getx_controller.dart';
 import 'package:spy/page/interim_page.dart';
 import 'package:spy/page/card_page.dart';
 import 'package:spy/page/test_page.dart';
+import 'package:spy/services/google_ads.dart';
 
 class PlayerSelection extends StatefulWidget {
   const PlayerSelection({super.key});
@@ -16,7 +18,13 @@ int players = 2;
 
 
 class _PlayerSelectionState extends State<PlayerSelection> {
-
+  final GoogleAds googleAds = GoogleAds();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    googleAds.loadBannerAd();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +40,17 @@ class _PlayerSelectionState extends State<PlayerSelection> {
         width: double.maxFinite,
         height: double.maxFinite,
         child: Column(
+
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Container(
+              child: googleAds.bannerAd != null
+                  ? SizedBox(
+                      width: googleAds.bannerAd!.size.width.toDouble(),
+                      height: googleAds.bannerAd!.size.height.toDouble(),
+                      child: AdWidget(ad: googleAds.bannerAd!),
+                    )
+                  : Container()),
             SizedBox(height: 50,),
             Container(
               padding: EdgeInsets.symmetric(vertical: 50),

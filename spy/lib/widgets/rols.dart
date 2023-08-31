@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:spy/services/google_ads.dart';
 
 import '../controller/getx_controller.dart';
 import '../page/card_page.dart';
@@ -14,6 +15,8 @@ class Rols extends StatefulWidget {
 }
 
 class _RolsState extends State<Rols> {
+  final GoogleAds googleAds = GoogleAds();
+
   @override
   Widget build(BuildContext context) {
     final storageBox = GetStorage();

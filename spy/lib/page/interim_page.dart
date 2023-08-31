@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:spy/controller/getx_controller.dart';
 import 'package:spy/page/card_page.dart';
 import 'package:spy/page/test_page.dart';
+
+import '../services/google_ads.dart';
 
 class InterimPage extends StatefulWidget {
   
@@ -15,6 +18,13 @@ class InterimPage extends StatefulWidget {
 
 class _InterimPageState extends State<InterimPage> {
   final storageBox = GetStorage();
+  final GoogleAds googleAds = GoogleAds();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    googleAds.loadBannerAd();
+  }
   @override
   Widget build(BuildContext context) {
     ctrl.randomSpyStart();
@@ -34,19 +44,41 @@ class _InterimPageState extends State<InterimPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Container(
+              child: googleAds.bannerAd != null
+                  ? SizedBox(
+                      width: googleAds.bannerAd!.size.width.toDouble(),
+                      height: googleAds.bannerAd!.size.height.toDouble(),
+                      child: AdWidget(ad: googleAds.bannerAd!),
+                    )
+                  : Container()),
             SizedBox(
               height: 50,
             ),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 50),
+              padding: EdgeInsets.only(top: 50),
               child: Text(
-                "OYUNA BASLA",
+                "NASIL OYNANIR",
                 style: TextStyle(
                   fontSize: 30,
                   color: Colors.black54,
                 ),
               ),
             ),
+            Center(
+            child: Container(
+              margin: const EdgeInsets.only(top: 50),
+              width: 400,
+              height: 350,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadiusDirectional.circular(5),
+                image: const DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage("assets/how_to_play.png"),
+                ),
+              ),
+            ),
+          ),
           ],
         ),
       ),
