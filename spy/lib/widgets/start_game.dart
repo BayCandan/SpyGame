@@ -15,8 +15,8 @@ Widget StartGame(BuildContext context){
         child: InkWell(
           onTap: () {
             
-              Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: ((context) => Rols())));
+              // Navigator.pushReplacement(
+              //   context, MaterialPageRoute(builder: ((context) => Rols())));
          
           },
           child: Center(

@@ -57,42 +57,64 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       ),
-      floatingActionButton: count == 3
-          ? Container()
-          : Container(
-              height: 100,
-              width: 100,
-              child: FloatingActionButton(
-                child: Icon(
-                  Icons.arrow_forward_rounded,
-                  size: 40,
-                ),
-                onPressed: () {
-                  setState(() {});
-                  count++;
-                  print(count);
-                },
-                backgroundColor: Colors.black45,
-              )),
+      floatingActionButton:
+
+          //  /*
+          count == 3
+              ? Container(
+                  height: 100,
+                  width: 100,
+                  child: FloatingActionButton(
+                    child: Icon(
+                      Icons.add,
+                      size: 40,
+                    ),
+                    onPressed: () {
+                      setState(() {});
+                      count++;
+                      print(count);
+                    },
+                    backgroundColor: Colors.black45,
+                  ))
+              :
+              // */
+              Container(
+                  height: 100,
+                  width: 100,
+                  child: FloatingActionButton(
+                    child: Icon(
+                      Icons.arrow_forward_rounded,
+                      size: 40,
+                    ),
+                    onPressed: () {
+                      setState(() {});
+                      count++;
+                      print(count);
+                    },
+                    backgroundColor: Colors.black45,
+                  )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
   showPage() {
-    if (count == 0 ) {
+    if (count == 0) {
       setState(() {});
       return HomePage();
-    } else if (count == 1 ) {
+    } else if (count == 1) {
       setState(() {});
       return PlayerSelection();
-    } else if (count == 2 ) {
+    } else if (count == 2) {
       setState(() {});
       return InterimPage();
-    } else if (count == 3 ) {
+    } else if (count == 3) {
       setState(() {});
       return CardPage();
     } else if (count == 4) {
       return Rols();
-    }
+    } else if (count == 5) ;
+    setState(() {});
+    count = 3;
+    return CardPage();
   }
 }

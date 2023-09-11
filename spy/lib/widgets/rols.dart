@@ -22,13 +22,13 @@ class _RolsState extends State<Rols> {
     print('$mapIndex+ mapindex');
     var locList = storageBox.read('List');
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black38,
-        title: Text(
-          "Casus",
-          style: TextStyle(color: Colors.white38, fontSize: 24),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.black38,
+      //   title: Text(
+      //     "Casus",
+      //     style: TextStyle(color: Colors.white38, fontSize: 24),
+      //   ),
+      // ),
       backgroundColor: Colors.blueGrey,
       body: Center(
         child: Column(
@@ -82,11 +82,11 @@ class _RolsState extends State<Rols> {
                         height: 30,
                       ),
                       Divider(),
-                      Text(
-                        'Yeniden Baslamak Icin Dokun',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 30, color: Colors.black54),
-                      ),
+                      // Text(
+                      //   'Yeniden Baslamak Icin Dokun',
+                      //   textAlign: TextAlign.center,
+                      //   style: TextStyle(fontSize: 30, color: Colors.black54),
+                      // ),
                     ],
                   ),
                 ),

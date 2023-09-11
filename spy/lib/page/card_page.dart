@@ -74,7 +74,7 @@ class _CardPageState extends State<CardPage> {
   }
 
   dynamic isFront(front) {
-    if (front % 2 == 0 && nowPlayers <= players + 1) {
+    if (front % 2 == 0 && nowPlayers <= players + 2) {
       return CardImage();
     } else if (front % 2 == 1 && nowPlayers != spy && nowPlayers <= players) {
       return PlayerAndLoc(
@@ -84,15 +84,15 @@ class _CardPageState extends State<CardPage> {
     } else if (nowPlayers <= players) {
       return SpyCard(nowPlayers);
     } else {
+      ctrl.count++;
       return StartGame(context);
+
     }
   }
 
   void press() {
     cardFlip();
-
-    // print(spy);
-
+    deneme();
     front++;
     nowPlayersPlus();
     ctrl.readJson();
@@ -100,7 +100,6 @@ class _CardPageState extends State<CardPage> {
 
   void cardFlip() {
     Random random = Random();
-
     int cardValue = random.nextInt(13);
     front % 2 == 0 ? (front = 0) : front = 1;
   }
@@ -109,5 +108,10 @@ class _CardPageState extends State<CardPage> {
     if (front % 2 == 0) {
       nowPlayers++;
     }
+  }
+  void deneme(){
+    print('front $front');
+    print('now Players $nowPlayers');
+    print('players $players');
   }
 }

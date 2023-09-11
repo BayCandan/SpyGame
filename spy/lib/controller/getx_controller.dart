@@ -64,4 +64,6 @@ class Controller extends GetxController {
   //   print(oyunsonu);
   // }
 
+
+
 }
