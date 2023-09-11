@@ -32,7 +32,7 @@ class _CardPageState extends State<CardPage> {
   List items = storageBox.read('List');
   int itemsLenght = storageBox.read('locLength');
   int players = storageBox.read("player");
-  late int mapIndex = randomBetween(0, itemsLenght);
+  late int mapIndex = randomBetween(0, itemsLenght-1);
   late int spy = storageBox.read("spy");
   int front = 0;
   int oyunSonu = 0;
